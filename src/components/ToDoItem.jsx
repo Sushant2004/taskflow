@@ -63,13 +63,13 @@ const ToDoItem = ({ todo, onToggleComplete, onDelete, onEdit }) => {
                 onClick={handleEdit}
                 className="btn btn-save"
               >
-                Save
+                💾 Save
               </button>
               <button
                 onClick={handleCancel}
                 className="btn btn-cancel"
               >
-                Cancel
+                ❌ Cancel
               </button>
             </>
           ) : (
@@ -78,13 +78,13 @@ const ToDoItem = ({ todo, onToggleComplete, onDelete, onEdit }) => {
                 onClick={handleEdit}
                 className="btn btn-edit"
               >
-                Edit
+                ✏️ Edit
               </button>
               <button
                 onClick={() => onDelete(todo.id)}
                 className="btn btn-delete"
               >
-                Delete
+                🗑️ Delete
               </button>
             </>
           )}

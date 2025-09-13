@@ -72,6 +72,7 @@ function App() {
             onClick={addTodo}
             className="add-btn"
           >
+            <span>➕</span>
             Add Todo
           </button>
         </div>
@@ -82,14 +83,17 @@ function App() {
         <div className="stats">
           <div className="stats-grid">
             <div className="stat-item stat-total">
+              <div className="stat-icon">📊</div>
               <div className="stat-number">{totalTodos}</div>
               <div className="stat-label">Total Tasks</div>
             </div>
             <div className="stat-item stat-completed">
+              <div className="stat-icon">✅</div>
               <div className="stat-number">{completedTodos}</div>
               <div className="stat-label">Completed</div>
             </div>
             <div className="stat-item stat-remaining">
+              <div className="stat-icon">⏳</div>
               <div className="stat-number">{remainingTodos}</div>
               <div className="stat-label">Remaining</div>
             </div>
