@@ -27,24 +27,14 @@ const ToDoItem = ({ todo, onToggleComplete, onDelete, onEdit }) => {
   };
 
   return (
-    <div className={`bg-white rounded-lg shadow-md p-4 mb-3 transition-all duration-200 hover:shadow-lg ${
-      todo.completed ? 'opacity-75' : ''
-    }`}>
-      <div className="flex items-center space-x-3">
+    <div className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+      <div className="todo-content">
         {/* Checkbox */}
         <button
           onClick={() => onToggleComplete(todo.id)}
-          className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
-            todo.completed
-              ? 'bg-green-500 border-green-500 text-white'
-              : 'border-gray-300 hover:border-green-400'
-          }`}
+          className={`checkbox ${todo.completed ? 'checked' : ''}`}
         >
-          {todo.completed && (
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-            </svg>
-          )}
+          {todo.completed && '✓'}
         </button>
 
         {/* Todo Text */}
@@ -55,31 +45,29 @@ const ToDoItem = ({ todo, onToggleComplete, onDelete, onEdit }) => {
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
               onKeyDown={handleKeyPress}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="edit-input"
               autoFocus
             />
           ) : (
-            <span className={`text-gray-800 text-lg ${
-              todo.completed ? 'line-through text-gray-500' : ''
-            }`}>
+            <span className={`todo-text ${todo.completed ? 'completed' : ''}`}>
               {todo.text}
             </span>
           )}
         </div>
 
         {/* Action Buttons */}
-        <div className="flex space-x-2">
+        <div className="todo-actions">
           {isEditing ? (
             <>
               <button
                 onClick={handleEdit}
-                className="px-3 py-1 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors duration-200 text-sm"
+                className="btn btn-save"
               >
                 Save
               </button>
               <button
                 onClick={handleCancel}
-                className="px-3 py-1 bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors duration-200 text-sm"
+                className="btn btn-cancel"
               >
                 Cancel
               </button>
@@ -88,13 +76,13 @@ const ToDoItem = ({ todo, onToggleComplete, onDelete, onEdit }) => {
             <>
               <button
                 onClick={handleEdit}
-                className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200 text-sm"
+                className="btn btn-edit"
               >
                 Edit
               </button>
               <button
                 onClick={() => onDelete(todo.id)}
-                className="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-200 text-sm"
+                className="btn btn-delete"
               >
                 Delete
               </button>
